@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <div class="main">
+    <div class="main-container">
+        <div class="left">
+
+            <div class="container">
+                <div class="c-box">
+                    <div class="col-6 text-light">
+                        <form name="frm" method="post" class="" novalidate>
+                            {% csrf_token %}
+                            {% for frm in form %}
+                            <div class="form-group pb-3 text-light">
+                                {{frm.label_tag}} <span class="text-danger">{{frm.errors|striptags}}</span>
+                                {{frm}}
+                              </div>
+                            {% endfor %}
+                            <input type="submit" value="Register" class="btn btn-custom">
+                        </form>
+                        {% comment %} {% if messages %}
+                        {% for msg in messages %}
+                            <div class="alert alert-success">
+                                {{msg}}
+                            </div>
+                        {% endfor %}
+                        {% endif %} {% endcomment %}
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="right">
+
+            {% if messages %}
+            <lottie-player src="https://lottie.host/26e88305-9a4a-4e29-8c52-666907605046/1OEIbz7RMt.json" speed="1"  direction="1" mode="normal" loop autoplay></lottie-player>
+
+
+            {% else %}
+            <lottie-player src="https://lottie.host/d21fa3e6-3a1b-4582-8385-c478ef4bbbaa/f5edFJ8pbt.json" background="transparent" speed="1" loop autoplay direction="1" mode="normal"></lottie-player>
+
+
+            {% endif %}
+
+        </div>
+    </div>
+    </div>
+{% endblock content %}

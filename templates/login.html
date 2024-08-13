@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="main">
+    <div class="main-container">
+        <div class="left">
+
+            <div class="container">
+                <div class="c-box">
+                    <div class="col-6 text-light">
+                        <h2>Signin</h2>
+                        <form name="frm" method="post">
+                            {% csrf_token %}
+                            {% for frm in form %}
+                            <div class="form-group pb-3 text-light">
+                                {{frm.label_tag}} <span class="text-danger">{{frm.errors|striptags}}</span>
+                                {{frm}}
+                              </div>
+                            {% endfor %}
+                            <input type="submit" value="Login" class="btn btn-custom">
+                        </form>
+                        {% if form.non_field_errors %}
+                            {% for error in form.non_field_errors %}
+                            <p>{{error}}</p>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="right">
+            {% if form.non_field_errors %}
+            <lottie-player src="https://lottie.host/f268ab4d-3103-4670-9fb5-a96184b8f62a/n1iAwaCzCz.json" speed="1"  direction="1" mode="normal" loop autoplay></lottie-player>
+
+            {% else %}
+            <lottie-player src="https://lottie.host/fd9dd114-81ca-4b78-831a-2dced1a08744/vKiVl1xqpE.json" speed="1"  direction="1" mode="normal" loop autoplay></lottie-player>
+            {% endif %}
+
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}
